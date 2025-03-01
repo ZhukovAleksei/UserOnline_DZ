@@ -1,5 +1,5 @@
 fun main() {
-    println(agoToText((60 * 60) * 16))
+    println(agoToText((60 * 60) * 2))
 }
 
 fun agoToText(seconds: Int): String {
@@ -31,11 +31,9 @@ fun minutes(seconds: Int): String {
 
 fun hours(seconds: Int): String {
     var hours = seconds / (60 * 60)
-    if (hours == 1 || hours == 21) {
-        return "$hours час назад"
-    }else if (hours == 2 || hours == 3 || hours == 4 || hours == 22 || hours == 23 || hours == 24) {
-        return "$hours часа назад"
-    }else{
-        return "$hours часов назад"
+    when (hours) {
+        1, 21 -> return "$hours час назад"
+        2,3,4,22,23,24 -> return "$hours часа назад"
+        else -> return "$hours часов назад"
     }
 }
